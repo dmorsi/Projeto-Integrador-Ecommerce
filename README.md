@@ -45,16 +45,16 @@ Po = Michael
 Scrum Master = Arthur
 Dev1 = Fernanda
 Dev = Diogo
-------------------------
 Fazer no Sprint 1
+------------------
 home
 Faq
 login
 cadastro de usuario
-----------------------
+
 
 Estrutura de um site de comércio eletrônico
-
+-------------------------------------------
 Index.html - página inicial com pequeno texto explicando a empresa,
 ofertas de destaque
 e vários botões para acesso às outras páginas do site
