@@ -47,10 +47,10 @@ Dev1 = Fernanda
 Dev = Diogo
 Fazer no Sprint 1
 ------------------
-home
-Faq
-login
-cadastro de usuario
+home  - index.html
+Faq   - faqind.html
+login - loginind.html
+cadastro de usuario - cadastroind.html
 
 
 Estrutura de um site de comércio eletrônico
@@ -67,5 +67,6 @@ categind2.html
 prodcat201.html - página de produtos da categoria2 que são oferecidos para venda.
 prodcat202.html - página de produtos da categoria2 que são oferecidos para venda.
 faqind.html
+cadastroind.html 
 loginind.html
 checkoutind.html
