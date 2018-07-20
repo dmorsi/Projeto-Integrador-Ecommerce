@@ -1,0 +1,57 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-image:url("imagens/spaceneedledrone.jpg");
+  background-size: 100%;
+  box-sizing: border-box;
+  border-bottom: 3px solid silver;
+  }
+
+#link1, #link2, #link3, #link4, #link5 {
+  color:black;
+}
+
+.logo {
+  border-radius: 70%;
+  border: 1px solid black;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+h1 { display: none;
+}
+
+body {
+  background-color: white;
+}
+
+li {
+  margin: 2px auto;
+  background-color: rgba(255,255,255,0.5);
+  color: black;
+}
+
+section {
+  box-sizing: border-box;
+  border-bottom: 3px solid silver;
+}
+
+h2 {
+  text-align: center;
+  color: white;
+  background-color:rgb(156, 156, 99);
+}
+
+.sobre {
+  margin: 0 auto;
+  list-style: none;
+}
+
+.FAQ {
+  margin: 0 auto;
+  list-style: none;
+}
