@@ -1,4 +1,15 @@
-
+<?php
+require "caddados.php";
+session_start();
+if($_POST) {
+  $email = $_POST["email"];
+  $senha = $_POST["senha"];
+  $cadastro = new logar($email,$senha);
+  $resultado = $cadastro->valsenha();
+  //$session["idusuario"] = $resultado[0]["idusuario"];
+  VAR_DUMP($resultado);
+}
+ ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -33,13 +44,18 @@
 
 
 <h2 class="cadastro">Login</h2>
-<form action="verify_password.php" method="post">
+<form action="login.php" method="post">
 <div class="login"><label>Email</label><input type="email" name="email" value="" required></div>
 <div class="login"><label>Senha</label><input type="password" name="senha" value="" required></div>
 <button class="login" type=”submit”>Enviar</button>
 </form>
-
-
+<p>
+<?php
+if($_POST) {
+  echo($resultado);
+  }
+ ?>
+</p>
 <div class="cadastro">Caso você não seja cadastrado, <a href="cadastro.php">clique aqui.</a></div>
 
 
