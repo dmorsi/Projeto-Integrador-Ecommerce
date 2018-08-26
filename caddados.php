@@ -21,6 +21,7 @@ class caddados {
   }
 
   public function salvarDados(){
+    if($this->nome == "") {return "Sem dados";}
     $dbname = "drone";
     $usuario = "Michael";
     $senha   = "1234";
@@ -39,13 +40,8 @@ class caddados {
        ":data_nasc" => $this->data_nascimento,
        ":novidades" => $this->novidades
      ]);
-     $result = $db->lastInsertId();
-     //$query = $db->prepare("SELECT MAX(idusuarios) FROM usuarios");
-     //$resultado = $query->execute();
-
-     //$result = $query->fetchAll(PDO::FETCH_ASSOC);
-
-    return $result;
+     $iDusu = $db->lastInsertId();
+     return $iDusu;
   }
 }
 //Para verificar se usuario está cadastrado
@@ -83,9 +79,9 @@ class cadender {
   private $estado;
   private $resultado;
   private $result;
-  private $idusuario;
+  private $fk_idusuarios;
 
-  public function __construct($endereco,$complemento,$bairro,$cep,$pais,$cidade,$estado,$idusuario){
+  public function __construct($endereco,$complemento,$bairro,$cep,$pais,$cidade,$estado,$fk_idusuarios){
     $this->endereco = $endereco;
     $this->compelmento = $complemento;
     $this->bairro = $bairro;
@@ -93,7 +89,8 @@ class cadender {
     $this->pais = $pais;
     $this->cidade = $cidade;
     $this->estado = $estado;
-    $this->idusuario = $idusuario;
+    $this->fk_idusuarios = $fk_idusuarios;
+
   }
 
   public function salvarDados(){
@@ -101,10 +98,13 @@ class cadender {
     $usuario = "Michael";
     $senha   = "1234";
     $conn    = "mysql:host=127.0.0.1;dbname=drone;charset=utf8mb4";
-
     $db = new PDO($conn, $usuario, $senha);
-    $query = $db->prepare("INSERT INTO enderecos (endereco,complemento,bairro,cep,pais,cidade,estado,fkcliente)
-                            VALUES (:endereco,:complemento,:bairro,:cep,:pais,:cidade,:estado,:idusuarios)");
+
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+
+    $query = $db->prepare("INSERT INTO enderecos (endereco,complemento,bairro,cep,pais,cidade,estado,fk_idusuarios)
+                            VALUES (:endereco,:complemento,:bairro,:cep,:pais,:cidade,:estado,:fk_idusuarios)");
     $resultado = $query->execute([
          ":endereco" => $this->endereco,
          ":complemento" => $this->complemento,
@@ -113,11 +113,11 @@ class cadender {
          ":pais" => $this->pais,
          ":cidade" => $this->cidade,
          ":estado" => $this->estado,
-         ":idusuarios" => $this->idusuario
+         ":fk_idusuarios" => $this->fk_idusuarios
     ]);
-    $query = $db->prepare("SELECT MAX(idenderecos) FROM enderecos");
-    $resultado = $query->execute();
-    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+    $select = $db->prepare("SELECT MAX(idenderecos) FROM enderecos");
+    $resultado = $select->execute();
+    $result = $select->fetchAll(PDO::FETCH_ASSOC);
 
     return $result;
   }

@@ -100,7 +100,7 @@ VAR_DUMP($retorno);
 //if(empty($retorno)) {
   $cadcli = new caddados($nome,$sobrenome,$email,$cripto,$sexo,$data_nascimento,$novidades);
   $Idusuario = $cadcli->salvarDados();
-  echo($Idusuario);
+  
   //} else {
 //  $Idusuario = 0;
 //}
@@ -256,6 +256,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
  echo $novidades;
  echo "<br>";
  echo $cripto;
+ echo "<br>";
+ echo($Idusuario);
 }
 ?>
 
