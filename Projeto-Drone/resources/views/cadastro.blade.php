@@ -54,6 +54,7 @@ form action='cadastro.php'-->
 <!-- 20180624 - Diogo - Alteração de todos os nomes para valores com letras minúsculas-->
 
 <form method="post" action="/cadastro">
+@csrf
 <ul class="cadastro" style="list-style: none;">
   <p><span class="error">* Campos Obrigatórios</span></p>
   <label>Título</label><li display: inline-block><select nome="titulo">

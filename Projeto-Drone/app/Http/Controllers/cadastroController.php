@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\usuarios;
+use App\enderecos;
 
 class cadastroController extends Controller
 {
@@ -12,7 +13,7 @@ class cadastroController extends Controller
       return view('cadastro');
     }
     public function gravaformulario(Request $request){
-      echo("Estou aqui !!!");
+
       $this->validate($request,['nome' => 'required',
                                 'sobrenome' => 'required',
                                 'email' => 'required',
@@ -32,7 +33,7 @@ class cadastroController extends Controller
         'nome' => $request->input('nome'),
         'sobrenome' => $request->input('sobrenome'),
         'email' => $request->input('email'),
-        'senha' => $request->input('senha'),
+        'senha' => password_hash($request->input('senha'),PASSWORD_DEFAULT),
         'data_nasc' => $request->input('data_nasc'),
         'sexo' => $request->input('sexo'),
         'novidades' => $request->input('novidades')
@@ -41,15 +42,17 @@ class cadastroController extends Controller
       $sucessousuario = $usuario->save();
 
       $endereco = enderecos::create([
-        'endereco' => 'required',
+        'endereco' => $request->input('endereco'),
         'complemento' => $request->input('complemento'),
         'bairro' => $request->input('bairro'),
         'cidade' => $request->input('cidade'),
         'estado' => $request->input('estado'),
         'pais'   => $request->input('pais'),
-        'cep'    => $request->input('cep')
+        'CEP'    => $request->input('cep'),
+        'fk_idusuarios' => $usuario->id,
       ]);
 
       $sucessoendereco = $endereco->save();
+      echo('Gravado !');
     }
 }
