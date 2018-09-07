@@ -23,3 +23,11 @@ Route::get('/', function () {
 Route::get('/cadastro', 'cadastroController@exibirformulario');
 
 Route::post('/cadastro', 'cadastroController@gravaformulario');
+
+Route::get('/achausuario/{email}','cadastroController@achausuario');
+
+Route::get('/login', 'loginController@exibirformulario');
+
+Route::post('/login','loginController@versenha');
+
+Route::get('/produto', 'produtoController@exibirformulario');

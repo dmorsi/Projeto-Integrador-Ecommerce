@@ -31,10 +31,10 @@
 
     <ul class="ul row" style="list-style-type: none;">
       <li class="limenu col-9 col-md-2"><a class="menu" href="#sobre" id="link1">Sobre</a></li>
-      <li class="limenu col-9 col-md-2"><a class="menu" href="marcas.php" id="link2">Produtos</a></li>
+      <li class="limenu col-9 col-md-2"><a class="menu" href="produto" id="link2">Produtos</a></li>
       <li class="limenu col-9 col-md-2"><a class="menu" href="#FAQ" id="link3">FAQ</a></li>
-      <li class="limenu col-9 col-md-2"><a class="menu" href="login.php" id="link4">Login</a></li>
-      <li class="limenu col-9 col-md-2"><a class="menu" href="cadastro.php" id="link5">Cadastro</a></li>
+      <li class="limenu col-9 col-md-2"><a class="menu" href="login" id="link4">Login</a></li>
+      <li class="limenu col-9 col-md-2"><a class="menu" href="cadastro" id="link5">Cadastro</a></li>
     </ul>
   </header>
 
@@ -45,7 +45,7 @@
 
 <h2 class="cadastro">Cadastro</h2>
 <h3 class="cadastro">Dados pessoais</h3>
-
+<a href="/">Voltar</a>
 
 <!-- 20180624 - Diogo - Alterar para imprimir os dados informados no arquivo imprimir.php
  antes:
@@ -56,8 +56,9 @@ form action='cadastro.php'-->
 <form method="post" action="/cadastro">
 @csrf
 <ul class="cadastro" style="list-style: none;">
-  <p><span class="error">* Campos Obrigatórios</span></p>
-  <label>Título</label><li display: inline-block><select nome="titulo">
+  <!--<p><span class="error">* Campos Obrigatórios</span></p>-->
+  <li class="limenu col-9 col-md-10" display: inline-block>
+  <label>Título</label><select class="opmenu col-9 col-md-2" nome="titulo">
   <option value="Senhor">Senhor</option>
   <option value="Senhora">Senhora</option>
   <option value="Senhorita">Senhorita</option>
@@ -66,22 +67,22 @@ form action='cadastro.php'-->
   <option value="Caro">Caro</option>
   <option value="Cara">Cara</option>
   </select>
-<li>
-  <label>Nome</label><br><input type="text" name="nome"  required>
-<li>
-  <label>Sobrenome</label><br><input type="text" name="sobrenome"  required>
-<li>
-  <label>Email</label><br><input size="50px" type="email" name="email"  required>
-<li>
-  <label>Data de Nascimento</label><br><input type="date" name="data_nasc" required>
+
+  <label class="opmenu">Nome</label><input type="text" name="nome"  required>
+
+  <label class="opmenu">Sobrenome</label><input type="text" name="sobrenome"  required>
+<li class="limenu col-9 col-md-10">
+  <label class="marginright">Email</label><input size="50px" type="email" name="email"  required>
+  <label class="opmenu">Data de Nascimento</label><input type="date" name="data_nasc" required>
 <br>
-<label>Sexo</label>
-<li><input type="radio" name="sexo" value="Masculino" required>Masculino
-<li><input type="radio" name="sexo" value="Feminino" required>Feminino
-<li><input type="radio" name="sexo" value="Outro" required>Outro
+<li class="limenu col-9 col-md-10">
+  <label>Sexo</label>
+<li class="opmenu col-9 col-md-10"><input type="radio" name="sexo" value="Masculino" required>Masculino
+<li class="opmenu col-9 col-md-10"><input type="radio" name="sexo" value="Feminino" required>Feminino
+<li class="opmenu col-9 col-md-10"><input type="radio" name="sexo" value="Outro" required>Outro
 
   <!-- 20180624 - Diogo - Alterando type de text para "password" -->
-<li><label>Senha</label><br><input  type="password" name="senha" placeholder="Digite sua senha" required>
+<li class="limenu col-9 col-md-10"><label>Senha</label><br><input  type="password" name="senha" placeholder="Digite sua senha" required>
 </ul>
 <h3 class="cadastro">Endereço</h3>
 <ul class="cadastro" style="list-style: none;">
@@ -94,7 +95,16 @@ form action='cadastro.php'-->
   <li class="limenu col-9 col-md-10"><div width:20px>CEP</div><input type="text" name="cep"  required>
 </ul>
 <label>
-  <input type="checkbox" name="novidades" value="sim" checked class="cadastro">Desejo receber ofertas e novidades da Drone Solution!</label>
+  <input type="checkbox" name="novidades" value="sim" checked class="cadastro">Desejo receber ofertas e novidades da Drone Solution!
+</label>
+@if (count($errors) > 0)
+  <div class="alert alert-danger">
+     <ul>
+        <li>email já cadastrado</li>
+     </ul>
+  </div>
+@endif
+
 <br>
   <button type="submit">Enviar</button>
   <button class="cadastro" type="reset" formaction="/cadastro">Reiniciar</button>

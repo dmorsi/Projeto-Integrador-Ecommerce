@@ -14,9 +14,16 @@ class cadastroController extends Controller
     }
     public function gravaformulario(Request $request){
 
+      //$usuario = usuarios::where('email',$request->email)->get();
+      //if ($usuario->email != ''){
+        // echo('Este Email já está cadastrado');
+        // exit;
+      //};
+
+
       $this->validate($request,['nome' => 'required',
                                 'sobrenome' => 'required',
-                                'email' => 'required',
+                                'email' => 'required|email|unique:usuarios',
                                 'senha'=> 'required',
                                 'data_nasc' => 'required',
                                 'sexo' => 'required',
@@ -28,6 +35,7 @@ class cadastroController extends Controller
                                 'pais'   => 'required',
                                 'cep'    => 'required',
                                 'novidades' => 'required']);
+
 
       $usuario = usuarios::create([
         'nome' => $request->input('nome'),
@@ -54,5 +62,10 @@ class cadastroController extends Controller
 
       $sucessoendereco = $endereco->save();
       echo('Gravado !');
+    }
+
+    public function achausuario($email){
+      $usuario = usuarios::where('email',$email);
+
     }
 }

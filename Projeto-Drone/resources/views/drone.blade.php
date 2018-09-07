@@ -24,9 +24,9 @@
 
       <ul class="ul row" style="list-style-type: none;">
         <li class="limenu col-9 col-md-2"><a class="menu" href="#sobre" id="link1">Sobre</a></li>
-        <li class="limenu col-9 col-md-2"><a class="menu" href="marcas.php" id="link2">Produtos</a></li>
+        <li class="limenu col-9 col-md-2"><a class="menu" href="produto" id="link2">Produtos</a></li>
         <li class="limenu col-9 col-md-2"><a class="menu" href="#FAQ" id="link3">FAQ</a></li>
-        <li class="limenu col-9 col-md-2"><a class="menu" href="home" id="link4">Login</a></li>
+        <li class="limenu col-9 col-md-2"><a class="menu" href="login" id="link4">Login</a></li>
         <li class="limenu col-9 col-md-2"><a class="menu" href="cadastro" id="link5">Cadastro</a></li>
       </ul>
 
