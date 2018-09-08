@@ -75,24 +75,58 @@ form action='cadastro.php'-->
   <label class="marginright">Email</label><input size="50px" type="email" name="email"  required>
   <label class="opmenu">Data de Nascimento</label><input type="date" name="data_nasc" required>
 <br>
-<li class="limenu col-9 col-md-10">
+<br>
   <label>Sexo</label>
-<li class="opmenu col-9 col-md-10"><input type="radio" name="sexo" value="Masculino" required>Masculino
-<li class="opmenu col-9 col-md-10"><input type="radio" name="sexo" value="Feminino" required>Feminino
-<li class="opmenu col-9 col-md-10"><input type="radio" name="sexo" value="Outro" required>Outro
-
+<input class="opmenu" type="radio" name="sexo" value="Masculino" required>Masculino
+<input class="opmenu" type="radio" name="sexo" value="Feminino" required>Feminino
+<!--<li class="opmenu col-9 col-md-10"><input type="radio" name="sexo" value="Outro" required>Outro
+-->
   <!-- 20180624 - Diogo - Alterando type de text para "password" -->
-<li class="limenu col-9 col-md-10"><label>Senha</label><br><input  type="password" name="senha" placeholder="Digite sua senha" required>
+<label class="opmenu">Senha</label><input class="opmenu" type="password" name="senha" placeholder="Digite sua senha" required>
 </ul>
 <h3 class="cadastro">Endereço</h3>
 <ul class="cadastro" style="list-style: none;">
-  <li class="limenu col-9 col-md-10"><div width:20px>Endereço</div><input type="text" size=50px name="endereco" required>
-  <li class="limenu col-9 col-md-10"><div width:20px>Complemento</div><input type="text" name="complemento" >
-  <li class="limenu col-9 col-md-10"><div width:20px>Bairro</div><input type="text" name="bairro"  required>
-  <li class="limenu col-9 col-md-10"><div width:20px>Cidade</div><input type="text" name="cidade"  required>
-  <li class="limenu col-9 col-md-10"><div width:20px>Estado</div><input type="text" name="estado"  required>
-  <li class="limenu col-9 col-md-10"><div width:20px>País</div><input type="text" name="pais"  required>
-  <li class="limenu col-9 col-md-10"><div width:20px>CEP</div><input type="text" name="cep"  required>
+  <li class="opmenu col-9 col-md-10"><div width:20px>CEP<input class = "opmenu" type="text" size=10px name="cep"  required></div>
+  <br>
+  <li class="opmenu col-9 col-md-10"><div width:20px>Endereço<input class="opmenu" type="text" size=50px name="endereco" required>
+  Complemento<input class="opmenu" type="text" name="complemento" ></div>
+  <br>
+  <li class="limenu col-9 col-md-10"><div width:20px>Bairro<input class="opmenu" type="text" name="bairro"  required>
+  Cidade<input class="opmenu" type="text" name="cidade"  required>
+
+
+  <label>Estado</label><select class="opmenu"  name="estado"  required>
+    <option value="AC">Acre</option>
+    <option value="AL">Alagoas</option>
+    <option value="AM">Amazonas</option>
+    <option value="BA">Bahia</option>
+    <option value="CE">Ceará</option>
+    <option value="DF">Distrito Federal</option>
+    <option value="ES">Esiprito Santo</option>
+    <option value="EX">Exterior</option>
+    <option value="GO">Goias</option>
+    <option value="MA">Maranhão</option>
+    <option value="MG">Minas Gerais</option>
+    <option value="MT">Mato Grosso</option>
+    <option value="MS">Mato Grosso do Sul</option>
+    <option value="PA">Pará</option>
+    <option value="PB">Paraíba</option>
+    <option value="PE">Pernambuco</option>
+    <option value="PI">Piauí</option>
+    <option value="PR">Paraná</option>
+    <option value="RJ">Rio de Janeiro</option>
+    <option value="RN">Rio Grande do Norte</option>
+    <option value="RO">Rondonia</option>
+    <option value="RR">Roraima</option>
+    <option value="RS">Rio Grande do Sul</option>
+    <option value="SC">Santa Catarina</option>
+    <option value="SE">Sergipe</option>
+    <option value="SP">São Paulo</option>
+    <option value="TO">Tocantins</option>
+  </select>
+  </div>
+  <li class="limenu col-9 col-md-10"><div width:20px>País<input class="opmenu" type="text" name="pais"  required></div>
+
 </ul>
 <label>
   <input type="checkbox" name="novidades" value="sim" checked class="cadastro">Desejo receber ofertas e novidades da Drone Solution!
@@ -100,7 +134,9 @@ form action='cadastro.php'-->
 @if (count($errors) > 0)
   <div class="alert alert-danger">
      <ul>
-        <li>email já cadastrado</li>
+         @foreach ($errors->all() as $error)
+        <li>{{$error}}</li>
+        @endforeach
      </ul>
   </div>
 @endif
@@ -111,8 +147,10 @@ form action='cadastro.php'-->
 <br>
 <a href="/">Voltar</a>
 
+<script type="text/javascript" source="{{ URL::asset('js/rodape.js') }}" >
 
 
+</script>
 
 <footer class="text-center">
    <a href="#logo"> <img src="imagens/DronesDigital.png" class="logobaixo" alt="logosite" width=100px height=""> </a>

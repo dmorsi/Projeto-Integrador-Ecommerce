@@ -33,7 +33,7 @@ class cadastroController extends Controller
                                 'cidade' => 'required',
                                 'estado' => 'required',
                                 'pais'   => 'required',
-                                'cep'    => 'required',
+                                'cep'    => 'required|max:8',
                                 'novidades' => 'required']);
 
 

@@ -31,3 +31,7 @@ Route::get('/login', 'loginController@exibirformulario');
 Route::post('/login','loginController@versenha');
 
 Route::get('/produto', 'produtoController@exibirformulario');
+
+Route::get('/cadcategorias', 'produtoController@exibircadcategorias');
+
+Route::post('/cadcategorias', 'produtoController@gravacadcategorias');

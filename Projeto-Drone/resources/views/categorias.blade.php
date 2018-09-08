@@ -23,8 +23,8 @@
       <li class="limenu col-9 col-md-2"><a class="menu" href="#sobre" id="link1">Sobre</a></li>
       <li class="limenu col-9 col-md-2"><a class="menu" href="produto" id="link2">Produtos</a></li>
       <li class="limenu col-9 col-md-2"><a class="menu" href="#FAQ" id="link3">FAQ</a></li>
-      <li class="limenu col-9 col-md-2"><a class="menu" href="#login" id="link4">Login</a></li>
-      <li class="limenu col-9 col-md-2"><a class="menu" href="#cadastro" id="link5">Cadastro</a></li>
+      <li class="limenu col-9 col-md-2"><a class="menu" href="login" id="link4">Login</a></li>
+      <li class="limenu col-9 col-md-2"><a class="menu" href="cadastro" id="link5">Cadastro</a></li>
     </ul>
   </header>
 
@@ -70,7 +70,7 @@
 <div class="row">
 <div class="col-sm-4">
   <div class="card">
-    <img class="card-img-top" src="imagens/fotografia/Alta8.jpg" alt="Alta8 foto">
+    <img class="card-img-top" src="imagens/fotografia/Alta8.png" alt="Alta8 foto">
     <div class="card-block">
       <h4 class="card-title">Alta 8</h4>
       <p class="card-text">Modelo Alta 8 Marca Freefly Sistem</p>
