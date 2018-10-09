@@ -12,15 +12,15 @@
       <h2>cadastro de categorias</h2>
       <br>
       <article class="esquerdo">
-        <form class="produtos" method="post" action="/cadcategorias">
+        <form id="form" class="produtos" method="post" action="/cadcategorias">
           @csrf
           categoria
           <br>
-         <input type="text" name="descrição"></input>
+         <input id="descricao" type="text" name="descrição"></input>
          <br>
          descricao
          <br>
-         <textarea rows = "4" cols = "50" name="texto_descritivo"></textarea>
+         <textarea id="texto_descritivo" rows = "4" cols = "50" name="texto_descritivo"></textarea>
 
 
           @if (count($errors) > 0)
@@ -36,5 +36,29 @@
           <button type="submit">Enviar</button>
         </form>
       </article>
+      <article class="direito">
+       @foreach($categorias as $categoria)
+        <h4>{{$categoria->idcategorias}}&nbsp
+        {{$categoria->descrição}}&nbsp</h4>
+       {{$categoria->texto_descritivo}}
+       <hr>
+       @endforeach
+       </article>
+       <script>
+
+          descricao.addEventListener("blur",function(){
+            let xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+              if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+              texto_descritivo.value = xmlhttp.responseText;
+                //Meu código
+              }
+            };
+            xmlhttp.open("GET", "exibecadtexto/"+descricao.value, true);
+            xmlhttp.send();
+
+          });
+
+      </script>
   </body>
 </html>

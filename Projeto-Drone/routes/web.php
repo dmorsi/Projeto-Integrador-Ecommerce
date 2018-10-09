@@ -11,10 +11,8 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/', 'produtoController@exibirdrone');
     //return view('welcome');
-    return view('drone');
-});
 
 //Auth::routes();
 
@@ -26,6 +24,8 @@ Route::post('/cadastro', 'cadastroController@gravaformulario');
 
 Route::get('/achausuario/{email}','cadastroController@achausuario');
 
+Route::get('/exibecep/{CEP}', 'cadastroController@exibecep');
+
 Route::get('/login', 'loginController@exibirformulario');
 
 Route::post('/login','loginController@versenha');
@@ -35,3 +35,5 @@ Route::get('/produto', 'produtoController@exibirformulario');
 Route::get('/cadcategorias', 'produtoController@exibircadcategorias');
 
 Route::post('/cadcategorias', 'produtoController@gravacadcategorias');
+
+Route::get('/exibecadtexto/{descricao}', 'produtoController@exibecadtexto');

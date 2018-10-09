@@ -4,3 +4,9 @@
   width: 400px;
   height: 400px;
 }
+.direito {
+  float:right;
+  overflow:auto;
+  width: 600px;
+  height: 400px;
+}

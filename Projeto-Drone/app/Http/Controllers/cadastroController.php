@@ -33,8 +33,8 @@ class cadastroController extends Controller
                                 'cidade' => 'required',
                                 'estado' => 'required',
                                 'pais'   => 'required',
-                                'cep'    => 'required|max:8',
-                                'novidades' => 'required']);
+                                'cep'    => 'required|max:8'
+                                ]);
 
 
       $usuario = usuarios::create([
@@ -68,4 +68,16 @@ class cadastroController extends Controller
       $usuario = usuarios::where('email',$email);
 
     }
+    public function exibecep($CEP){
+      $CepJson = Json_decode(file_get_contents("http://www.viacep.com.br/ws/".$CEP."/json"));
+      //$CepJson = (file_get_contents("http://www.viacep.com.br/ws/".$CEP."/json"));
+        //echo($CepJson->logradouro);
+        //echo($CepJson->bairro);
+        //VAR_DUMP($CepJson);
+        //exit;
+        return (Json_encode($CepJson));
+          //      $CepJson->bairro );
+                                    //  'bairro',$CepJson->bairro );
+    }
+
 }

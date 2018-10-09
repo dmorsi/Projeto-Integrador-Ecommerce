@@ -1,36 +1,12 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Produtos</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ url('css/estilos.css') }}">
-</head>
 
-<body>
-  <header id="logo" class="text-center">
-    <h1 class="destaque">DronesDigital</h1>
-      <img src="imagens/DronesDigital.png" class="logo" alt="logosite" width=100px height="" />
-    <div class="row">
-      <img src="imagens/barcelona.jpg" class="fundodesk col-4" alt="imagemfundo">
-      <img src="imagens/canyons.png" class="fundodesk col-4" alt="imagemfundo">
-      <img src="imagens/starnbergersee.jpg" class="fundodesk col-4" alt="imagemfundo">
-    </div>
+    @extends('layouts.cabecfront')
 
-
-    <ul class="ul row" style="list-style-type: none;">
-      <li class="limenu col-9 col-md-2"><a class="menu" href="#sobre" id="link1">Sobre</a></li>
-      <li class="limenu col-9 col-md-2"><a class="menu" href="produto" id="link2">Produtos</a></li>
-      <li class="limenu col-9 col-md-2"><a class="menu" href="#FAQ" id="link3">FAQ</a></li>
-      <li class="limenu col-9 col-md-2"><a class="menu" href="login" id="link4">Login</a></li>
-      <li class="limenu col-9 col-md-2"><a class="menu" href="cadastro" id="link5">Cadastro</a></li>
-    </ul>
-  </header>
+    @section('content')
 
 <h2 class="text-center">Produtos<h2>
 
-<h3 class=produtos>Agricultura<h3>
+<h3 id="Agricultura" class=produtos>Agricultura<h3>
   <div class="row">
   <div class="col-sm-4">
   <div class="card">
@@ -66,7 +42,7 @@
 </div>
 </div>
 
-<h3 class=produtos>Fotografia<h3>
+<h3 id="Fotografia" class=produtos>Fotografia<h3>
 <div class="row">
 <div class="col-sm-4">
   <div class="card">
@@ -102,7 +78,7 @@
 </div>
 </div>
 
-<h3 class=produtos>Hobby<h3>
+<h3 id="Hobby" class=produtos>Hobby<h3>
 <div class="row">
 <div class="col-sm-4">
   <div class="card">
@@ -138,13 +114,6 @@
   </div>
 </div>
 
-  <footer class="text-center">
-     <a href="#logo"> <img src="imagens/DronesDigital.png" class="logobaixo" alt="logosite" width=100px height=""> </a>
-       <div class="contato">
-         <p>Telefone para contato: 0922-4-8893 / 209309--03</p>
-         <p>Email: dronedigital@gmail.com</p>
-         <p>Localização: Av. Monteiro Lobato, 92</p>
-       </div>
-   </footer>
+  @endsection
   </body>
   </html>

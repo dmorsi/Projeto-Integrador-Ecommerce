@@ -3,44 +3,9 @@
 
 
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-   <!-- 20180624 - Diogo - Código PHP para a validação dos dados-->
-    <style>
-    .error {color: #FF0000;}
-    </style>
-    <!-- 20180624 - Diogo - Código PHP para a validação dos dados-->
-    <title>Cadastro</title>
-    <meta nome="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ url('css/estilos.css') }}">
-</head>
+@extends('layouts.cabecfront')
 
-
-<body>
-  <header id="logo" class="text-center">
-    <h1 class="destaque">DronesDigital</h1>
-      <img src="imagens/DronesDigital.png" class="logo" alt="logosite" width=100px height="" />
-    <div class="row">
-      <img src="imagens/barcelona.jpg" class="fundodesk col-4" alt="imagemfundo">
-      <img src="imagens/canyons.png" class="fundodesk col-4" alt="imagemfundo">
-      <img src="imagens/starnbergersee.jpg" class="fundodesk col-4" alt="imagemfundo">
-    </div>
-
-
-    <ul class="ul row" style="list-style-type: none;">
-      <li class="limenu col-9 col-md-2"><a class="menu" href="#sobre" id="link1">Sobre</a></li>
-      <li class="limenu col-9 col-md-2"><a class="menu" href="produto" id="link2">Produtos</a></li>
-      <li class="limenu col-9 col-md-2"><a class="menu" href="#FAQ" id="link3">FAQ</a></li>
-      <li class="limenu col-9 col-md-2"><a class="menu" href="login" id="link4">Login</a></li>
-      <li class="limenu col-9 col-md-2"><a class="menu" href="cadastro" id="link5">Cadastro</a></li>
-    </ul>
-  </header>
-
-  <!-- 20180624 - Diogo - Código PHP para a validação dos dados-->
-
-
+@section('content')
 
 
 <h2 class="cadastro">Cadastro</h2>
@@ -86,16 +51,16 @@ form action='cadastro.php'-->
 </ul>
 <h3 class="cadastro">Endereço</h3>
 <ul class="cadastro" style="list-style: none;">
-  <li class="opmenu col-9 col-md-10"><div width:20px>CEP<input class = "opmenu" type="text" size=10px name="cep"  required></div>
+  <li class="opmenu col-9 col-md-10"><div width:20px>CEP<input id="CEP" class = "opmenu" type="text" size=10px name="cep"  required></div>
   <br>
-  <li class="opmenu col-9 col-md-10"><div width:20px>Endereço<input class="opmenu" type="text" size=50px name="endereco" required>
+  <li class="opmenu col-9 col-md-10"><div width:20px>Endereço<input id="Endereco" class="opmenu" type="text" size=50px name="endereco" required>
   Complemento<input class="opmenu" type="text" name="complemento" ></div>
   <br>
-  <li class="limenu col-9 col-md-10"><div width:20px>Bairro<input class="opmenu" type="text" name="bairro"  required>
-  Cidade<input class="opmenu" type="text" name="cidade"  required>
+  <li class="limenu col-9 col-md-10"><div width:20px>Bairro<input id="bairro"class="opmenu" type="text" name="bairro"  required>
+  Cidade<input class="opmenu" id="cidade" type="text" name="cidade"  required>
 
 
-  <label>Estado</label><select class="opmenu"  name="estado"  required>
+  <label>Estado</label><select class="opmenu"  id="estado" name="estado"  required>
     <option value="AC">Acre</option>
     <option value="AL">Alagoas</option>
     <option value="AM">Amazonas</option>
@@ -128,8 +93,8 @@ form action='cadastro.php'-->
   <li class="limenu col-9 col-md-10"><div width:20px>País<input class="opmenu" type="text" name="pais"  required></div>
 
 </ul>
-<label>
-  <input type="checkbox" name="novidades" value="sim" checked class="cadastro">Desejo receber ofertas e novidades da Drone Solution!
+<label class="opmenu col-9 col-md-10">
+  <input type="checkbox" name="novidades" value="sim" class="cadastro">&nbsp&nbspDesejo receber ofertas e novidades da Drone Solution!
 </label>
 @if (count($errors) > 0)
   <div class="alert alert-danger">
@@ -147,18 +112,29 @@ form action='cadastro.php'-->
 <br>
 <a href="/">Voltar</a>
 
-<script type="text/javascript" source="{{ URL::asset('js/rodape.js') }}" >
+  <script type="text/javascript" source="{{ URL::asset('js/rodape.js') }}" >
 
+    CEP.addEventListener("blur",function(){
+      let xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+          let resposta = JSON.parse(xmlhttp.responseText);
 
-</script>
+          Endereco.value = resposta.logradouro;
+          bairro.value = resposta.bairro;
+          cidade.value = resposta.localidade;
+          estado.value = resposta.uf;
+          //console.log(JSON.parse(xmlhttp.responseText));
 
-<footer class="text-center">
-   <a href="#logo"> <img src="imagens/DronesDigital.png" class="logobaixo" alt="logosite" width=100px height=""> </a>
-     <div class="contato">
-       <p>Telefone para contato: 0922-4-8893 / 209309--03</p>
-       <p>Email: dronedigital@gmail.com</p>
-       <p>Localização: Av. Monteiro Lobato, 92</p>
-     </div>
- </footer>
+        }
+      };
+      let valor = xmlhttp.open("GET", "exibecep/"+CEP.value, true);
+
+      xmlhttp.send();
+
+    });
+  </script>
+@endsection
+
 </body>
 </html>
