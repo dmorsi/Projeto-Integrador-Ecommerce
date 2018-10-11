@@ -19,7 +19,10 @@ class loginController extends Controller
                               'senha'=> 'required',
                               ]);
     $usuario = usuarios::where('email','=',$request->input('email'))->get();
-    //VAR_DUMP($usuario[0]->senha);
+    if (sizeof($usuario) == 0)
+    { echo("Usuario não encontrado !");
+      return view('login');
+    }
     //VAR_DUMP($request->input('email'));
     //VAR_DUMP($request->input('senha'));
     //echo($request->input('senha'));
@@ -27,8 +30,11 @@ class loginController extends Controller
     $valsenha = password_verify($request->input('senha'),$usuario[0]->senha);
 
     if ($valsenha === true){
-      echo("logado com sucesso ".$usuario[0]->nome);
+      //usulog.value = $usuario[0]->nome." ".$usuario[0]->sobrenome;
+      echo("logado com sucesso ".$usuario[0]->nome." ".$usuario[0]->sobrenome);
+      return view('categorias');//->with([$usulog => $usuario[0]->nome." ".$usuario[0]->sobrenome]);
       } else {echo("verfique senha/nome");
+      return view('login');
     }
     return view('categorias');
   }

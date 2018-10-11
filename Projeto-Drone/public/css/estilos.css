@@ -50,6 +50,12 @@ h2 {
   background-color:rgb(156, 156, 99);
 }
 
+.usuario {
+  margin: 3px auto;
+  background-color: rgb(156, 156, 99);
+  color: white;
+}
+
 .sobre {
   margin: 0 auto;
   list-style: none;

@@ -17,13 +17,13 @@
 form action='cadastro.php'-->
 
 <!-- 20180624 - Diogo - Alteração de todos os nomes para valores com letras minúsculas-->
-
+<?php $usulog='' ?>
 <form method="post" action="/login">
 @csrf
   <!--<div class="limenu col-9 col-md-10" display: inline-block>-->
-  <label class="opmenu">Email</label><input size="50px" type="email" name="email"  required>
+  <label class="opmenu">Email</label><input id = email size="50px" type="email" name="email"  required>
   <!-- 20180624 - Diogo - Alterando type de text para "password" -->
-  <label class="opmenu">Senha</label><input  type="password" name="senha" placeholder="Digite sua senha" required>
+  <label class="opmenu">Senha</label><input id = senha type="password" name="senha" placeholder="Digite sua senha" required>
   @if (count($errors) > 0)
     <div class="alert alert-danger">
       <ul>

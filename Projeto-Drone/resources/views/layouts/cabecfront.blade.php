@@ -9,10 +9,17 @@
     <!--<link rel="stylesheet" href="estilos.css">
     -->
   </head>
-
+  @csrf
   <body>
 
     <header id="logo" class="text-center">
+      <p class="usuario" id=usulog>
+      @if(isset($usulog))
+        {{$usulog}}
+        @else
+          <?php $usulog='' ?>
+      @endif
+      </p>
       <h1 class="destaque">DronesDigital</h1>
       <a href="/#logo"><img src="{{ url('imagens/DronesDigital.png') }}" class="logo" alt="logosite" width=100px height="" /></a>
       <div class="row">
@@ -20,6 +27,8 @@
         <img src="imagens/canyons.png" class="fundodesk col-4" alt="imagemfundo">
         <img src="imagens/starnbergersee.jpg" class="fundodesk col-4" alt="imagemfundo">
       </div>
+
+
 
 
       <ul class="ul row" style="list-style-type: none;">

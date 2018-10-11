@@ -26,11 +26,7 @@ form action='cadastro.php'-->
   <label>Título</label><select class="opmenu col-9 col-md-2" nome="titulo">
   <option value="Senhor">Senhor</option>
   <option value="Senhora">Senhora</option>
-  <option value="Senhorita">Senhorita</option>
-  <option value="Prezado">Prezado</option>
-  <option value="Prezada">Prezada</option>
-  <option value="Caro">Caro</option>
-  <option value="Cara">Cara</option>
+
   </select>
 
   <label class="opmenu">Nome</label><input type="text" name="nome"  required>
@@ -47,7 +43,10 @@ form action='cadastro.php'-->
 <!--<li class="opmenu col-9 col-md-10"><input type="radio" name="sexo" value="Outro" required>Outro
 -->
   <!-- 20180624 - Diogo - Alterando type de text para "password" -->
-<label class="opmenu">Senha</label><input class="opmenu" type="password" name="senha" placeholder="Digite sua senha" required>
+<br>
+<br>
+<label class="opmenu">Senha</label><input  id = 'senha' class="opmenu" type="password" name="senha" placeholder="Digite sua senha" required>
+<label class="opmenu">Confirma Senha</label><input id = 'csenha' class="opmenu" type="password" name="csenha" placeholder="Digite sua senha" required>
 </ul>
 <h3 class="cadastro">Endereço</h3>
 <ul class="cadastro" style="list-style: none;">
@@ -133,6 +132,17 @@ form action='cadastro.php'-->
       xmlhttp.send();
 
     });
+    csenha.addEventListener("blur",function(){
+      if (senha.value == csenha.value) {
+        alert('Senhas coincidem');
+        }
+        else {
+          alert('Senhas não coincidem');
+          csenha.value = '';
+          senha.value = '';
+        }
+    })
+
   </script>
 @endsection
 
