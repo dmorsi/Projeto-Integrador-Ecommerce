@@ -12,9 +12,16 @@ use App\pedidos;
 use App\carrinho;
 use App\dadostecnicosdrone;
 
+function __construct() {
+   global $usulog;
+   $usulog='';
+}
 class produtoController extends Controller
 {
+
+
     public function exibirformulario() {
+
       return(view('categorias'));
     }
     public function exibircadcategorias() {
@@ -23,6 +30,9 @@ class produtoController extends Controller
     }
 
     public function exibirdrone() {
+
+      global $usulog;
+      $usulog='';
       $categorias = categorias::all();  //mostra as categorias já cadastradas
       return(view('drone'))->with('categorias',$categorias);
     }
@@ -55,7 +65,7 @@ class produtoController extends Controller
     {
        $categoria = categorias::where('descrição',$descricao)->get();
        //return json_encode($categoria);
-       return $categoria[0]->texto_descritivo ;     
+       return $categoria[0]->texto_descritivo ;
     }
     public function gravafabricantes(Request $request) {
 

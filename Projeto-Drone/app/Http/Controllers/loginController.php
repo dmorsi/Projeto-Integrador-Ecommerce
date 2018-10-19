@@ -30,8 +30,9 @@ class loginController extends Controller
     $valsenha = password_verify($request->input('senha'),$usuario[0]->senha);
 
     if ($valsenha === true){
-      //usulog.value = $usuario[0]->nome." ".$usuario[0]->sobrenome;
-      echo("logado com sucesso ".$usuario[0]->nome." ".$usuario[0]->sobrenome);
+      $usulog = $usuario[0]->nome." ".$usuario[0]->sobrenome;
+
+      echo("logado com sucesso ".$usulog);
       return view('categorias');//->with([$usulog => $usuario[0]->nome." ".$usuario[0]->sobrenome]);
       } else {echo("verfique senha/nome");
       return view('login');

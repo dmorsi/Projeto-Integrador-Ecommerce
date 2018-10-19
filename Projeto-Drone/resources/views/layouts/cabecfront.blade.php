@@ -15,9 +15,11 @@
     <header id="logo" class="text-center">
       <p class="usuario" id=usulog>
       @if(isset($usulog))
-        {{$usulog}}
+        <?php  echo('Usuario :'.$usulog) ?>
+        
         @else
-          <?php $usulog='' ?>
+          <?php global $usulog;
+          $usulog=''; ?>
       @endif
       </p>
       <h1 class="destaque">DronesDigital</h1>
